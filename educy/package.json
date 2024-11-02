@@ -4,7 +4,7 @@
   "description": "automation ui using cypress",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "cypress": "^13.15.1"
   }
 }

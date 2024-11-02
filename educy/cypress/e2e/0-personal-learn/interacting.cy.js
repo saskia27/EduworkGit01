@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 
-describe('Browser action', () => {
-	it('Should load books website', () => {
-		cy.visit('https://books.toscrape.com/index.html', { timeout: 10000 })
-		cy.url().should('include', 'index.html')
-	})
 
-	it('Should click on Travel Category', () => {
-		cy.get('a').contains('Travel').click()
-		cy.get('h1').contains('Travel')
-	})
-})
+
+describe('Working with inputs', () => {
+    it('Successfull login', () => {
+        cy.visit('http://zero.webappsecurity.com/login.html')
+        cy.get('#user_login').type('username');
+        cy.get('#user_password').type('password');
+        cy.get('#user_remember_me').click();
+        cy.get('.btn.btn-primary').click();
+    });
+});
