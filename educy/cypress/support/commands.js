@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('payBill', (payee, amount, date, description) => {
+    // Kunjungi halaman pembayaran
+    cy.visit('https://zero.webappsecurity.com/bank/pay-bills.html');
+  
+    // Isi formulir pembayaran
+    cy.get('#sp_payee').select(payee); // Pilih payee
+    cy.get('#sp_amount').type(amount); // Isi jumlah
+    cy.get('#sp_date').type(date); // Isi tanggal
+    cy.get('#sp_description').type(description); // Isi deskripsi
+  
+    // Klik tombol "Pay" untuk melakukan pembayaran
+    cy.get('#pay_saved_payees').click();
+  });
+  
