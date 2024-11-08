@@ -37,5 +37,8 @@ describe('Login/ Logout Test', () => {
         cy.contains('username').click()
         cy.get('#logout_link').click()
         cy.get('strong').should('contain.text', 'Home')
+        cy.get('#user_login').should('be.visible');
     });
 });
+
+
