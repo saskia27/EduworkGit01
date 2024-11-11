@@ -22,20 +22,20 @@
 //   });
 // });
 
-    describe('Zero Web App Payment Test', () => {
-     const username = 'valid_username'; 
-     const password = 'valid_password';  
-     const payee = 'Sprint';  
-     const account = 'Credit Card';  
-     const amount = '100';  
-     const date = '2024-11-08'; 
-     const description = 'Pembayaran tagihan listrik';  
+describe('Zero Web App Payment Test', () => {
+  const username = 'valid_username'; 
+  const password = 'valid_password';  
+  const payee = 'Sprint';  
+  const account = 'Credit Card';  
+  const amount = '100';  
+  const date = '2024-11-08'; 
+  const description = 'Pembayaran tagihan listrik';  
 
-      it('should log in and make a payment successfully', () => {
-        cy.login(username, password);
-        cy.makePayment(payee, account, amount, date, description);
-      });
-    });
+   it('should log in and make a payment successfully', () => {
+     cy.login(username, password);
+     cy.makePayment(payee, account, amount, date, description);
+   });
+ });
 
 
    
