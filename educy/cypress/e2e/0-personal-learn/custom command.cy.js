@@ -34,8 +34,8 @@
       it('should log in and make a payment successfully', () => {
         cy.login(username, password);
         cy.makePayment(payee, account, amount, date, description);
-        });
       });
+    });
 
 
    
