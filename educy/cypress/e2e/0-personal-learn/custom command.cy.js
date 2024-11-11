@@ -26,7 +26,7 @@
      const username = 'valid_username'; 
      const password = 'valid_password';  
      const payee = 'Sprint';  
-      const account = 'Credit Card';  
+     const account = 'Credit Card';  
      const amount = '100';  
      const date = '2024-11-08'; 
      const description = 'Pembayaran tagihan listrik';  
