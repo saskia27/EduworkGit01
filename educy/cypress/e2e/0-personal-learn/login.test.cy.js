@@ -33,11 +33,6 @@
 //         })
 //     })
 
-//     it('should logout from the application', () => {
-//         //TODO
-//     })
-// })
-
 describe('Login/ Logout Test', () => {
     before(() => {
         cy.visit('http://zero.webappsecurity.com/index.html')
@@ -78,6 +73,7 @@ describe('Login/ Logout Test', () => {
         cy.get('#user_login').should('be.visible') 
     });
 });
+  
 
 
 
