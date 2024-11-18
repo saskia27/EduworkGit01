@@ -1,10 +1,10 @@
-Feature: Search Functionality
+Feature: Search Results Display
+  As a user
+  I want to see search results displayed correctly
+  So that I know my query was processed
 
-    As a user 
-    I want to use the search feature
-    So that I can find relevant information on the website
-
-    Scenario: Valid Search Query
-        Given I open the homepage
-        When I enter "online banking" in the search field
-        Then I should see search results related to "online banking"
+  Scenario: Display no results message for empty search
+    Given I am on the search page
+    When I type "searchTerm" in the search bar and press enter
+    Then I should see "Search Results:" displayed as a heading
+    And I should see a message "No results were found for the query:       searchTerm"
