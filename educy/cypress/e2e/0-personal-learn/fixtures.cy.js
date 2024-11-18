@@ -5,10 +5,14 @@ describe('SauceDemo Login and Add to Cart', () => {
     // Mengunjungi halaman login SauceDemo
     cy.visit('https://www.saucedemo.com/');
 
-    // Melakukan login
-    cy.get('input[name="user-name"]').type('standard_user'); // Ganti dengan username Anda
-    cy.get('input[name="password"]').type('secret_sauce'); // Ganti dengan password Anda
-    cy.get('input[type="submit"]').click();
+    cy.fixture("user").then(user => {
+      const username = user.username
+      const password = user.password
+
+      cy.get('#user-name').type(username)
+      cy.get('#password').type(password)
+      cy.contains('Login').click()
+    })
 
     // Verifikasi bahwa login berhasil
     cy.url().should('include', '/inventory.html');

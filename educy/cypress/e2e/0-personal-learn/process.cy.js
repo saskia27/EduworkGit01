@@ -83,5 +83,61 @@
 //     });
 // });
 
+describe('SauceDemo E2E Test: Login, Add to Cart, Checkout, and Logout', () => {
+  
+    // URL dasar SauceDemo
+    const baseUrl = 'https://www.saucedemo.com/';
+    
+    // Sebelum setiap test, buka halaman login
+    beforeEach(() => {
+      cy.visit(baseUrl);
+    });
+  
+    it('should log in, add item to cart, complete checkout, and log out', () => {
+      // **Step 1: Login**
+      cy.get('[data-test="username"]').type('standard_user');  
+      cy.get('[data-test="password"]').type('secret_sauce');   
+      cy.get('[data-test="login-button"]').click();            
+  
+      // Verifikasi login berhasil dengan memastikan URL mengarah ke halaman inventory
+      cy.url().should('include', '/inventory.html');
+  
+      // **Step 2: Menambahkan barang ke keranjang**
+      // Tambahkan barang pertama (sauce-labs-backpack)
+      cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click(); 
+  
+      // Klik pada ikon keranjang
+      cy.get('.shopping_cart_link').click(); 
+      
+      // Verifikasi bahwa barang sudah masuk ke keranjang
+      cy.get('.cart_item').should('have.length', 1);  // Pastikan ada 1 item di keranjang
+      
+      // **Step 3: Checkout barang**
+      cy.get('[data-test="checkout"]').click();  // Klik tombol checkout
+  
+      // Isi form informasi pengguna untuk checkout
+      cy.get('[data-test="firstName"]').type('John');  
+      cy.get('[data-test="lastName"]').type('Doe');    
+      cy.get('[data-test="postalCode"]').type('12345'); 
+      cy.get('[data-test="continue"]').click();         
+  
+      // Verifikasi bahwa halaman checkout sudah benar dengan total harga yang muncul
+      cy.get('.summary_total_label').should('contain', 'Total: $32.39');
+  
+      // Klik tombol "Finish" untuk menyelesaikan checkout
+      cy.get('[data-test="finish"]').click();
+  
+      // Verifikasi bahwa proses checkout selesai
+      cy.get('.complete-header').should('contain', 'Thank you for your order!');
+  
+      // **Step 4: Logout**
+      cy.get('#react-burger-menu-btn').click();  
+      cy.get('#logout_sidebar_link').click();    
+  
+      // Verifikasi logout berhasil dengan kembali ke halaman login
+      cy.url().should('include', '/');
+    });
+  });
+  
 
 
