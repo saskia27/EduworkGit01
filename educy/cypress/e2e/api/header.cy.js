@@ -23,3 +23,5 @@ describe('Validate Header and Response Body', () => {
 		})
 	})
 })
+
+// expect(response.body.abilities[0].ability.name).to.eq('limber');
