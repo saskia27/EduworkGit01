@@ -1,0 +1,48 @@
+-- Produk dan Informasi User yang Berhubungan
+SELECT 
+    users.id AS user_id,
+    users.name AS user_name,
+    products.id AS product_id,
+    products.name AS product_name,
+    categories.name AS category_name
+FROM 
+    users
+LEFT JOIN 
+    products ON users.id = products.user_id
+LEFT JOIN 
+    categories ON products.category_id = categories.id;
+
+
+
+
+-- Semua Produk dan Kategori yang Berhubungan
+SELECT 
+    products.id AS product_id,
+    products.name AS product_name,
+    categories.id AS category_id,
+    categories.name AS category_name
+FROM 
+    products
+LEFT JOIN 
+    categories 
+ON 
+    products.category_id = categories.id;
+
+
+
+-- Gabungkan Tiga Tabel Sekaligus
+SELECT 
+    products.id AS product_id,
+    products.name AS product_name,
+    users.name AS user_name,
+    categories.name AS category_name
+FROM 
+    products
+LEFT JOIN 
+    users 
+ON 
+    products.user_id = users.id
+LEFT JOIN 
+    categories 
+ON 
+    products.category_id = categories.id;

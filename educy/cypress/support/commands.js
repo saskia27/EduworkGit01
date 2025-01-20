@@ -28,17 +28,17 @@
 
   
  // Custom command for logging in
-Cypress.Commands.add('login', (username, password) => {
+ Cypress.Commands.add('login', (username, password) => {
   cy.visit('http://zero.webappsecurity.com/');
   cy.get('#signin_button').click();
   cy.get('#user_login').type(username);
   cy.get('#user_password').type(password);
   cy.get('input[type="submit"]').click();
-
   // Verify successful login
   cy.url().should('include', '/index.html');
   cy.get('.brand').should('contain', 'Zero Bank');
 });
+
 
 // Custom command for making a payment
 Cypress.Commands.add('makePayment', (payee, account, amount, date, description) => {
